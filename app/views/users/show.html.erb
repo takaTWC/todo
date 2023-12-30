@@ -5,6 +5,14 @@
   <div class="row">
     <div class="col-6">
       <h4>投稿</h4>
+      <%= form_with model: @list do |f| %>
+        <h6>タイトル</h6>
+        <%= f.text_field :title %>
+
+        <h6>内容</h6>
+        <%= f.text_area :body %>
+        <%= f.submit '投稿' %>
+      <% end %>
     </div>
     <div class="col-6">
       <h4>未</h4>
