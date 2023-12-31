@@ -24,10 +24,12 @@
           </tr>
         </thead>
         <tbody>
+          <% @lists.each do |list| %>
           <tr>
-            <td></td>
-            <td></td>
+            <td><%= list.created_at %></td>
+            <td><%= list.title %></td>
           </tr>
+          <% end %>
         </tbody>
       </table>
       <h4>済</h4>
