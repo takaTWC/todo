@@ -1,8 +1,9 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <h2><%= @list.title %><h2>
+      <h2><%= @list.title %></h2>
       <p><%= @list.body %></p>
+      <%= @list.is_complete ? '済' : '未' %>
     </div>
   </div>
 </div>
