@@ -3,7 +3,9 @@
     <div class="col-12">
       <h2><%= @list.title %></h2>
       <p><%= @list.body %></p>
-      <%= @list.is_complete ? '済' : '未' %>
+      <%= link_to complete_list_path(@list), method: :patch do %>
+        <%= @list.is_complete ? '済' : '未' %>
+      <% end %>
     </div>
   </div>
 </div>
