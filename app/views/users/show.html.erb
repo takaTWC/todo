@@ -5,13 +5,18 @@
   <div class="row">
     <div class="col-6">
       <h4>投稿</h4>
-      <%= form_with model: @list do |f| %>
-        <h6>タイトル</h6>
-        <%= f.text_field :title %>
+      <%= form_with model: @list, html: { class: 'form-group' } do |f| %>
+        <div class="mb-3">
+          <label for="list_title" class="form-label">タイトル</label>
+          <%= f.text_field :title, id: 'list_title', class: 'form-control' %>
+        </div>
 
-        <h6>内容</h6>
-        <%= f.text_area :body %>
-        <%= f.submit '投稿' %>
+        <div class="mb-3">
+          <label for="list_body" class="form-label">内容</label>
+          <%= f.text_area :body, id: 'list_body', class: 'form-control', rows: 3 %>
+        </div>
+
+        <%= f.submit '投稿', class: 'btn btn-primary' %>
       <% end %>
     </div>
     <div class="col-6">
