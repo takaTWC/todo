@@ -1,10 +1,14 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <h2><%= @list.title %></h2>
-      <p><%= @list.body %></p>
-      <%= link_to complete_list_path(@list), method: :patch do %>
-        <%= @list.is_complete ? '済' : '未' %>
+      <h2 class="mb-3"><%= @list.title %></h2>
+      <p class="mb-3"><%= @list.body %></p>
+      <% if @list.is_complete %>
+        <p class="alert alert-success">このタスクは完了しています</p>
+      <% else %>
+        <%= link_to complete_list_path(@list), method: :patch, class: "btn btn-primary" do %>
+          完了にする
+        <% end %>
       <% end %>
     </div>
   </div>
