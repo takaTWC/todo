@@ -1,9 +1,12 @@
-<div class="container">
-  <div class="row">
-    <h2>マイページ</h2>
+<div class="container mt-4">
+  <div class="row mb-4">
+    <div class="col-12">
+      <h2 class="text-center">マイページ</h2>
+    </div>
   </div>
+
   <div class="row">
-    <div class="col-6">
+    <div class="col-md-6 mb-4">
       <h4>投稿</h4>
       <%= form_with model: @list, html: { class: 'form-group' } do |f| %>
         <div class="mb-3">
@@ -19,41 +22,17 @@
         <%= f.submit '投稿', class: 'btn btn-primary' %>
       <% end %>
     </div>
-    <div class="col-6">
-      <h4>未</h4>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>追加日</th>
-            <th>タイトル</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @lists.select { |list| !list.is_complete }.each do |list| %>
-            <tr>
-              <td><%= list.created_at.strftime("%Y/%m/%d %H:%M") %></td>
-              <td><%= link_to list.title, list_path(list) %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-      <h4>済</h4>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>追加日</th>
-            <th>タイトル</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @lists.select { |list| list.is_complete }.each do |list| %>
-            <tr>
-              <td><%= list.created_at.strftime("%Y/%m/%d %H:%M") %></td>
-              <td><%= link_to list.title, list_path(list) %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+
+    <div class="col-md-6">
+      <div class="mb-4">
+        <h4>未</h4>
+        <%= render 'lists_table', lists: @lists.reject(&:is_complete) %>
+      </div>
+
+      <div>
+        <h4>済</h4>
+        <%= render 'lists_table', lists: @lists.select(&:is_complete) %>
+      </div>
     </div>
   </div>
 </div>
