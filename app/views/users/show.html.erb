@@ -29,8 +29,7 @@
         <h4>未</h4>
         <%= render 'lists_table', lists: @lists.reject(&:is_complete) %>
       </div>
-
-      <div>
+      <div class="mb-4">
         <h4>済</h4>
         <%= render 'lists_table', lists: @lists.select(&:is_complete) %>
       </div>
